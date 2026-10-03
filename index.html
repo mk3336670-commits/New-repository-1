@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Study Materials & Downloads</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Segoe UI,sans-serif}
+body{background:#08111f;color:#f8fafc;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}
+
+/* Modern Sleek Header */
+header{background:linear-gradient(135deg,#1e1b4b,#312e81);color:#fff;padding:15px 20px;position:sticky;top:0;z-index:20;border-bottom:1px solid #3730a3;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.head{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{background:linear-gradient(135deg,#6366f1,#4f46e5);width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:18px;font-weight:900;color:#fff;box-shadow:0 4px 12px rgba(99,102,241,0.4)}
+.title-text h1{font-size:18px;font-weight:700;letter-spacing:0.3px}
+.title-text p{font-size:12px;color:#a5b4fc;margin-top:1px}
+.header-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#fff;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:16px;transition:all 0.2s}
+.icon-btn:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.25)}
+
+.container{max-width:1100px;margin:auto;padding:22px 15px 45px}
+.hero{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#111b2d;border:1px solid #2b3952;border-radius:17px;padding:20px;margin-bottom:20px}
+.hero p{color:#94a3b8;margin-top:6px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:#111b2d;border:1px solid #2b3952;border-radius:17px;padding:20px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}
+.card:hover{transform:translateY(-2px);border-color:#3b82f6}
+.cardtop{display:flex;gap:14px}.icon{width:54px;height:54px;border-radius:13px;display:grid;place-items:center;font-weight:800;font-size:14px;flex-shrink:0}
+.pdf{background:#42191c;color:#f87171}.code{background:#43310b;color:#fbbf24}.paper{background:#2c1250;color:#c084fc}.syll{background:#073b30;color:#34d399}
+.card h3{font-size:18px;margin-bottom:6px}.card p{font-size:14px;color:#94a3b8;line-height:1.45}
+.bottom{border-top:1px solid #293750;padding-top:14px;margin-top:18px;display:flex;justify-content:space-between;align-items:center}
+.count{font-size:13px;color:#64748b}
+.btn{border:0;border-radius:9px;padding:10px 15px;color:#fff;font-weight:700}.blue{background:#2563eb}.green{background:#059669}.red{background:#dc2626}.gray{background:#334155}.purple{background:#7c3aed}.orange{background:#d97706}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+
+/* Centered Modal Overlay Fix */
+.overlay{display:none;position:fixed;inset:0;background:rgba(2,6,23,.82);backdrop-filter:blur(6px);z-index:100;align-items:center;justify-content:center;padding:15px;overflow-y:auto}
+.overlay.open{display:flex}
+.modal{background:#111b2d;border:1px solid #3a4963;border-radius:17px;width:100%;max-width:570px;max-height:85vh;overflow-y:auto;padding:21px;box-shadow:0 25px 80px #000b;margin:auto}
+
+.mhead{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #293750;padding-bottom:14px;margin-bottom:17px}
+.mhead h2{font-size:22px}.close{border:0;background:#293750;color:#fff;border-radius:9px;width:40px;height:40px;font-size:23px;line-height:40px}
+.close:hover{background:#dc2626}
+.group{margin-bottom:14px}.group label{display:block;color:#a8b3c7;font-size:13px;margin-bottom:6px}
+input,select{width:100%;background:#09111f;border:1px solid #34445f;color:#fff;border-radius:9px;padding:12px;outline:none}
+input:focus,select:focus{border-color:#3b82f6}
+.link{background:none;border:0;color:#60a5fa;text-decoration:underline;font-size:13px;padding:4px 0}
+.help{font-size:12px;color:#8492a8;line-height:1.55;background:#0c1525;border:1px solid #293750;border-radius:9px;padding:10px;margin-top:12px}
+.file{background:#09111f;border:1px solid #293750;border-radius:10px;padding:12px;margin-bottom:10px;display:flex;align-items:center;justify-content:between;gap:10px}
+.fi{min-width:0}.fi b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fi small{color:#64748b;display:block;margin-top:4px}
+.fa{display:flex;gap:5px;flex-shrink:0}.small{border:0;border-radius:6px;padding:7px 9px;color:#fff;font-size:12px;font-weight:700;text-decoration:none}.empty{text-align:center;color:#64748b;padding:28px}
+
+/* Center Toast Popup */
+.toast{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:300;background:#111b2d;color:#f8fafc;border:1px solid #10b981;border-radius:11px;padding:16px 24px;box-shadow:0 25px 60px #000c;max-width:400px;text-align:center;font-weight:600}
+.toast.show{display:block}.toast.err{border-color:#ef4444}
+
+.profile{background:#17233a;border:1px solid #33435f;border-radius:10px;padding:12px;margin-bottom:15px;color:#cbd5e1;line-height:1.7}
+.notice{background:#211a0b;border:1px solid #725216;color:#f7d58a;border-radius:10px;padding:11px;font-size:12px;line-height:1.5;margin-bottom:14px}
+
+/* Top Support Box Layout */
+.support-box{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:15px 20px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:15px;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.support-info h3{color:#3b82f6;font-size:17px;display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.support-info p{color:#94a3b8;font-size:13px;line-height:1.4}
+.support-btn{background:#1e293b;color:#94a3b8;padding:8px 16px;border:1px solid #334155;border-radius:6px;text-decoration:none;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;transition:all 0.2s;white-space:nowrap}
+.support-btn:hover{background:#334155;color:white}
+
+@media(max-width:600px){.hero{align-items:flex-start;flex-direction:column}.actions{width:100%;justify-content:flex-start}.file{flex-direction:column;align-items:stretch}.fa{width:100%}.small{flex:1;text-align:center}.support-box{flex-direction:column;align-items:flex-start}.support-btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<header>
+<div class="head">
+<div class="brand">
+<div class="logo">&lt;/&gt;</div>
+<div class="title-text">
+<h1>Study Materials</h1>
+<p>Downloads & Resources</p>
+</div>
+</div>
+<div class="header-actions">
+<button class="icon-btn" id="refreshBtn" title="Refresh"><i class="fa-solid fa-rotate-right"></i></button>
+</div>
+</div>
+</header>
+
+<main class="container">
+<!-- Support Box at Top -->
+<section class="support-box" id="supportSection">
+<div class="support-info">
+<h3><i class="fa-solid fa-headset"></i> Need Help & Support?</h3>
+<p>If you are facing any issues uploading or downloading files, please contact support.</p>
+</div>
+<a href="mailto:support@example.com" class="support-btn"><i class="fa-solid fa-headset"></i> Contact Support</a>
+</section>
+
+<section class="hero">
+<div><p>Notes, PDFs, source codes, question papers and syllabus.</p></div>
+<div id="actions"></div>
+</section>
+
+<div class="grid" id="cards"></div>
+</main>
+
+<!-- LOGIN -->
+<div class="overlay" id="loginBox">
+<div class="modal" style="max-width:430px">
+<div class="mhead"><h2>Admin Login</h2><button type="button" class="close" data-close="loginBox">×</button></div>
+<form id="loginForm">
+<div class="group"><label>Username</label><input id="loginUser" required autocomplete="username" placeholder="Enter admin username"></div>
+<div class="group"><label>Password</label><input id="loginPassword" type="password" required autocomplete="current-password" placeholder="Enter password"></div>
+<button class="btn blue" style="width:100%">Sign In</button>
+</form>
+<div style="margin-top:12px;text-align:center"><button type="button" class="link" id="forgotBtn">Forgot Password?</button></div>
+<div class="help">This version uses a local admin account. Login, username changes and password reset work directly in the browser without email.</div>
+</div>
+</div>
+
+<!-- RESET -->
+<div class="overlay" id="resetBox">
+<div class="modal" style="max-width:440px">
+<div class="mhead"><h2>Reset Password</h2><button type="button" class="close" data-close="resetBox">×</button></div>
+<div class="notice">Local reset: no email is used. Enter your username and recovery code, then create a new password.</div>
+<form id="resetForm">
+<div class="group"><label>Admin Username</label><input id="resetUser" required placeholder="Current username"></div>
+<div class="group"><label>Recovery Code</label><input id="resetCode" required placeholder="Recovery code"></div>
+<div class="group"><label>New Password</label><input id="resetNewPassword" type="password" minlength="6" required placeholder="Minimum 6 characters"></div>
+<div class="group"><label>Confirm New Password</label><input id="resetConfirm" type="password" minlength="6" required placeholder="Repeat password"></div>
+<button class="btn purple" style="width:100%">Reset Password</button>
+</form>
+<div class="help">Default recovery code on first run: <b>ADMIN-RESET-2026</b>. You can change it from Admin Account after login.</div>
+</div>
+</div>
+
+<!-- ACCOUNT -->
+<div class="overlay" id="accountBox">
+<div class="modal" style="max-width:470px">
+<div class="mhead"><h2>Admin Account</h2><button type="button" class="close" data-close="accountBox">×</button></div>
+<div class="profile" id="profileInfo"></div>
+<form id="usernameForm">
+<div class="group"><label>New Username</label><input id="newUsername" minlength="3" maxlength="30" required placeholder="3–30 characters"></div>
+<button class="btn blue" style="width:100%">Change Username</button>
+</form>
+<div style="height:10px"></div>
+<form id="passwordChangeForm">
+<div class="group"><label>New Password</label><input id="newPassword" type="password" minlength="6" required placeholder="Minimum 6 characters"></div>
+<div class="group"><label>Confirm Password</label><input id="newPassword2" type="password" minlength="6" required placeholder="Repeat password"></div>
+<button class="btn purple" style="width:100%">Change Password</button>
+</form>
+<div style="height:10px"></div>
+<form id="recoveryForm">
+<div class="group"><label>New Recovery Code</label><input id="newRecovery" minlength="6" required placeholder="Your private recovery code"></div>
+<button class="btn orange" style="width:100%">Change Recovery Code</button>
+</form>
+<div class="help">Keep the recovery code somewhere safe. Anyone who has it can reset this local admin password.</div>
+</div>
+</div>
+
+<!-- UPLOAD -->
+<div class="overlay" id="uploadBox">
+<div class="modal">
+<div class="mhead"><h2>Admin File Manager</h2><button type="button" class="close" data-close="uploadBox">×</button></div>
+<form id="uploadForm">
+<div class="group"><label>Category</label><select id="category">
+<option value="pdf">Important Notes & PDFs</option>
+<option value="code">Source Codes & Projects</option>
+<option value="papers">Question Papers</option>
+<option value="syllabus">Syllabus & Guidelines</option>
+</select></div>
+<div class="group"><label>File Title</label><input id="title" required placeholder="Example: Class 12 Physics Notes"></div>
+<div class="group"><label>Select File (maximum 25 MB)</label><input id="file" type="file" required></div>
+<button class="btn green" style="width:100%">Upload File</button>
+</form>
+</div>
+</div>
+
+<!-- FILES -->
+<div class="overlay" id="filesBox">
+<div class="modal">
+<div class="mhead"><h2 id="filesTitle">Files</h2><button type="button" class="close" data-close="filesBox">×</button></div>
+<div id="filesList"></div>
+</div>
+</div>
+
+<!-- DELETE -->
+<div class="overlay" id="deleteBox">
+<div class="modal" style="max-width:420px">
+<div class="mhead"><h2>Delete File</h2><button type="button" class="close" data-close="deleteBox">×</button></div>
+<p style="color:#cbd5e1;line-height:1.6;margin-bottom:18px">Are you sure you want to permanently delete this file?</p>
+<div style="display:flex;justify-content:flex-end;gap:8px"><button type="button" class="btn gray" data-close="deleteBox">Cancel</button><button type="button" class="btn red" id="deleteYes">Delete</button></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CATEGORIES={
+ pdf:["Important Notes & PDFs","All important topics and study materials.","pdf","PDF"],
+ code:["Source Codes","Coding projects and software files.","code","ZIP"],
+ papers:["Question Papers","Previous years papers and mock tests.","paper","Papers"],
+ syllabus:["Syllabus","Course syllabus and guidelines.","syll","Syllabus"]
+};
+const $=id=>document.getElementById(id);
+let currentUser=false,allFiles=[],deleteTarget=null,activeCategory=null;
+
+const DEFAULT_ADMIN={username:"admin",password:"admin123",recovery:"ADMIN-RESET-2026"};
+
+function getAdmin(){
+ try{
+   const x=JSON.parse(localStorage.getItem("studyAdmin"));
+   if(x && x.username && x.password && x.recovery)return x;
+ }catch(e){}
+ localStorage.setItem("studyAdmin",JSON.stringify(DEFAULT_ADMIN));
+ return {...DEFAULT_ADMIN};
+}
+function saveAdmin(x){localStorage.setItem("studyAdmin",JSON.stringify(x))}
+function toast(msg,err=false){
+ const t=$("toast");t.textContent=msg;t.className="toast show"+(err?" err":"");
+ clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>t.className="toast",3500);
+}
+function openModal(id){const el=$(id);if(el)el.classList.add("open")}
+function closeModal(id){const el=$(id);if(el)el.classList.remove("open")}
+function hideAllModals(){document.querySelectorAll(".overlay").forEach(x=>x.classList.remove("open"))}
+function esc(s){return String(s??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+function bytes(n){if(n<1024)return n+" B";if(n<1048576)return(n/1024).toFixed(1)+" KB";if(n<1073741824)return(n/1048576).toFixed(2)+" MB";return(n/1073741824).toFixed(2)+" GB"}
+
+document.querySelectorAll("[data-close]").forEach(b=>b.addEventListener("click",()=>closeModal(b.dataset.close)));
+document.querySelectorAll(".overlay").forEach(o=>o.addEventListener("click",e=>{if(e.target===o)closeModal(o.id)}));
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hideAllModals()});
+$("refreshBtn").onclick=async()=>{await loadFiles();toast("Page refreshed successfully.");};
+
+function renderActions(){
+ if(currentUser){
+  $("actions").innerHTML=`<div class="actions">
+    <button class="btn green" id="uploadBtn">Admin Upload</button>
+    <button class="btn blue" id="accountBtn">Account</button>
+    <button class="btn red" id="logoutBtn">Logout</button>
+  </div>`;
+  $("uploadBtn").onclick=()=>openModal("uploadBox");
+  $("accountBtn").onclick=openAccount;
+  $("logoutBtn").onclick=()=>{currentUser=false;renderActions();toast("Logged out successfully.");};
+ }else{
+  $("actions").innerHTML=`<button class="btn blue" id="loginBtn">Admin Login</button>`;
+  $("loginBtn").onclick=()=>openModal("loginBox");
+ }
+}
+function renderCards(){
+ $("cards").innerHTML=Object.entries(CATEGORIES).map(([k,c])=>{
+   const n=allFiles.filter(x=>x.category===k).length;
+   return `<div class="card" onclick="openCategory('${k}')">
+    <div class="cardtop"><div class="icon ${c[2]}">${c[3]}</div><div><h3>${c[0]}</h3><p>${c[1]}</p></div></div>
+    <div class="bottom"><span class="count">${n} Files</span><button type="button" class="btn blue" onclick="event.stopPropagation();openCategory('${k}')">View Files</button></div>
+   </div>`;
+ }).join("");
+}
+
+const DB_NAME="StudyMaterialsLocalDB",DB_VERSION=1,STORE="files";
+let dbPromise=null;
+function dbOpen(){
+ if(dbPromise)return dbPromise;
+ dbPromise=new Promise((resolve,reject)=>{
+  const req=indexedDB.open(DB_NAME,DB_VERSION);
+  req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(STORE))req.result.createObjectStore(STORE,{keyPath:"id"})};
+  req.onsuccess=()=>resolve(req.result);
+  req.onerror=()=>reject(req.error);
+ });
+ return dbPromise;
+}
+async function dbGetAll(){
+ const db=await dbOpen();
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readonly"),st=tx.objectStore(STORE),r=st.getAll();
+  r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error);
+ });
+}
+async function dbPut(item){
+ const db=await dbOpen();
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).put(item);
+  tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);
+ });
+}
+async function dbDelete(id){
+ const db=await dbOpen();
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");tx.objectStore(STORE).delete(id);
+  tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);
+ });
+}
+
+async function loadFiles(){
+ try{allFiles=await dbGetAll();allFiles.sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));}
+ catch(e){console.error(e);toast("Local file storage is not available in this browser.",true);allFiles=[]}
+ renderCards();
+}
+
+window.openCategory=function(k){
+ activeCategory=k;
+ $("filesTitle").textContent=CATEGORIES[k][0];
+ const list=allFiles.filter(x=>x.category===k);
+ $("filesList").innerHTML=list.length?list.map(f=>{
+   return `<div class="file">
+    <div class="fi"><b>${esc(f.title)}</b><small>${esc(f.fileName)} · ${bytes(f.size||0)}</small></div>
+    <div class="fa">
+      <button type="button" class="small blue" onclick="openFile('${esc(f.id)}')">Open</button>
+      <button type="button" class="small green" onclick="downloadFile('${esc(f.id)}')">Download</button>
+      ${currentUser?`<button type="button" class="small red" onclick="askDelete('${esc(f.id)}')">Delete</button>`:""}
+    </div>
+   </div>`;
+ }).join(""):`<div class="empty">No files are available in this category.</div>`;
+ openModal("filesBox");
+};
+
+window.openFile=function(id){
+ const f=allFiles.find(x=>x.id===id);
+ if(!f)return;
+ const win=window.open();
+ if(win){
+   win.document.write(`<iframe src="${f.data}" frameborder="0" style="border:0; top:0; left:0; bottom:0; right:0; width:100%; height:100%;" allowfullscreen></iframe>`);
+ }else{
+   toast("Popup blocked! Please allow popups.", true);
+ }
+};
+
+window.downloadFile=function(id){
+ const f=allFiles.find(x=>x.id===id);
+ if(!f)return;
+ const a=document.createElement('a');
+ a.href=f.data;
+ a.download=f.fileName;
+ document.body.appendChild(a);
+ a.click();
+ document.body.removeChild(a);
+};
+
+$("loginForm").onsubmit=e=>{
+ e.preventDefault();
+ const a=getAdmin(),u=$("loginUser").value.trim(),p=$("loginPassword").value;
+ if(u===a.username && p===a.password){
+   currentUser=true;closeModal("loginBox");$("loginForm").reset();renderActions();toast("Login successful.");
+ }else toast("Invalid username or password.",true);
+};
+
+$("forgotBtn").onclick=()=>{closeModal("loginBox");$("resetForm").reset();openModal("resetBox")};
+
+$("resetForm").onsubmit=e=>{
+ e.preventDefault();
+ const a=getAdmin(),u=$("resetUser").value.trim(),code=$("resetCode").value.trim(),p=$("resetNewPassword").value,c=$("resetConfirm").value;
+ if(u!==a.username){toast("Username does not match.",true);return}
+ if(code!==a.recovery){toast("Invalid recovery code.",true);return}
+ if(p.length<6){toast("Password must be at least 6 characters.",true);return}
+ if(p!==c){toast("Passwords do not match.",true);return}
+ a.password=p;saveAdmin(a);closeModal("resetBox");$("resetForm").reset();toast("Password reset successfully.");
+};
+
+async function openAccount(){
+ const a=getAdmin();
+ $("profileInfo").innerHTML=`<b>Admin Username:</b> ${esc(a.username)}`;
+ $("newUsername").value=a.username;
+ $("newPassword").value="";$("newPassword2").value="";$("newRecovery").value="";
+ openModal("accountBox");
+}
+$("usernameForm").onsubmit=e=>{
+ e.preventDefault();
+ const a=getAdmin(),u=$("newUsername").value.trim();
+ if(!/^[A-Za-z0-9_.-]{3,30}$/.test(u)){toast("Username must be 3–30 characters and use letters, numbers, dot, dash or underscore.",true);return}
+ a.username=u;saveAdmin(a);toast("Username changed successfully.");openAccount();
+};
+$("passwordChangeForm").onsubmit=e=>{
+ e.preventDefault();
+ const p=$("newPassword").value,c=$("newPassword2").value;
+ if(p.length<6){toast("Password must be at least 6 characters.",true);return}
+ if(p!==c){toast("Passwords do not match.",true);return}
+ const a=getAdmin();a.password=p;saveAdmin(a);$("passwordChangeForm").reset();toast("Password changed successfully.");
+};
+$("recoveryForm").onsubmit=e=>{
+ e.preventDefault();
+ const r=$("newRecovery").value.trim();
+ if(r.length<6){toast("Recovery code must be at least 6 characters.",true);return}
+ const a=getAdmin();a.recovery=r;saveAdmin(a);$("recoveryForm").reset();toast("Recovery code changed successfully.");
+};
+
+$("uploadForm").onsubmit=async e=>{
+ e.preventDefault();if(!currentUser)return;
+ const f=$("file").files[0];if(!f)return;
+ if(f.size>25*1024*1024){toast("Maximum file size is 25 MB.",true);return}
+ const btn=e.target.querySelector("button");btn.disabled=true;btn.textContent="Uploading...";
+ 
+ const reader=new FileReader();
+ reader.onload=async function(evt){
+  try{
+    const item={id:crypto.randomUUID?crypto.randomUUID():Date.now()+"_"+Math.random(),title:$("title").value.trim(),category:$("category").value,fileName:f.name,size:f.size,type:f.type,data:evt.target.result,createdAt:Date.now()};
+    await dbPut(item);e.target.reset();closeModal("uploadBox");toast("File uploaded successfully.");await loadFiles();
+  }catch(err){console.error(err);toast("Upload failed.",true)}
+  finally{btn.disabled=false;btn.textContent="Upload File"}
+ };
+ reader.onerror=()=>{btn.disabled=false;btn.textContent="Upload File";toast("File reading error.",true);};
+ reader.readAsDataURL(f);
+};
+
+window.askDelete=id=>{deleteTarget=allFiles.find(x=>x.id===id);if(deleteTarget)openModal("deleteBox")};
+$("deleteYes").onclick=async()=>{
+ if(!deleteTarget)return;
+ try{
+   await dbDelete(deleteTarget.id);deleteTarget=null;closeModal("deleteBox");toast("File deleted successfully.");await loadFiles();
+   if(activeCategory)openCategory(activeCategory);
+ }catch(e){toast("Delete failed.",true)}
+};
+
+renderActions();loadFiles();
+</script>
+</body>
+</html>
